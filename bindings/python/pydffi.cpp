@@ -426,6 +426,14 @@ PYBIND11_MODULE(PYDFFI_EXT_NAME, m)
 {
   DFFI::initialize();
 
+  m.doc() = R"pbdoc(
+        Dragonffi python module
+        -----------------------
+        .. currentmodule:: pydffi
+
+        TODO
+    )pbdoc";
+
   // Types
   py::class_<Type> type(m, "Type");
   type.def_property_readonly("size", &Type::getSize)
@@ -708,9 +716,9 @@ PYBIND11_MODULE(PYDFFI_EXT_NAME, m)
     .def_property_readonly("types", py::cpp_function(cu_types, py::keep_alive<0,1>()))
     ;
 
-  py::class_<DFFI>(m, "FFI")
+  py::class_<DFFI>(m, "FFI", "FFI class documentation TODO")
     .def(py::init(&default_ctor), py::arg("optLevel") = 2, py::arg("includeDirs") = py::list(), py::arg("sysroot") = py::str())
-    .def("cdef", dffi_cdef, py::keep_alive<0,1>())
+    .def("cdef", dffi_cdef, py::keep_alive<0,1>(), "cdef documentation TODO")
     .def("cdef", dffi_cdef_no_name, py::keep_alive<0,1>())
     .def("compile", dffi_compile, py::keep_alive<0,1>())
     //.def("view", dffi_view, py::keep_alive<0,1>(), py::keep_alive<0,2>())
