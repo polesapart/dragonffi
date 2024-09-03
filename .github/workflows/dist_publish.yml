@@ -222,7 +222,7 @@ jobs:
     - name: Install dependencies
       run: |
         pip install twine
-    - uses: actions/download-artifact@v1
+    - uses: actions/download-artifact@v4.1.7
       with:
         name: pydffi-wheels
         path: wheelhouse
